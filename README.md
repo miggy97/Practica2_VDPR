@@ -1,6 +1,7 @@
 # Practica 2 VDPR
 
-##Integrantes del equipo
+## Integrantes del equipo
+
 Javir Guillamón Pardo
 Borja Sanchidrián Monge
 Álvaro López-Jurado Reynolds
