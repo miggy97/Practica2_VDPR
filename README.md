@@ -2,11 +2,11 @@
 
 ## Integrantes del equipo
 
-Javir Guillamón Pardo
-Borja Sanchidrián Monge
-Álvaro López-Jurado Reynolds
-Marino Pérez Segura
-Miguel Ingelmo Barrada
+Javir Guillamón Pardo  
+Borja Sanchidrián Monge  
+Álvaro López-Jurado Reynolds  
+Marino Pérez Segura  
+Miguel Ingelmo Barrada  
 
 ## Enunciado
 

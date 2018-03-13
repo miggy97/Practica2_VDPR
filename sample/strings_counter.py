@@ -42,17 +42,17 @@ class StringsCounter(object):
                 cont += 1
         return cont
 
+
     @staticmethod
     def print_solution(dic, words, set_words):
         print ("\nNumero de palabras: " + str(words))
         print ("Numero de palabras diferentes: " + str(set_words) + "\n")
-        print ("|   Words   | Count |")
+        print ("|      Words      | Count |")
         print ("---------------------")
         for item in dic:
-            print("| " + item[0] + " "*(10-len(item[0])) + "| " + str(item[1]) + " "*(6-len(str(item[1]))) + "|")
+            space = 0
+            for x in [ord(c) for c in item[0]]:
+                if x > 128:
+                    space = 1
+            print("| " + item[0] + " "*(16-len(item[0])+space) + "| " + str(item[1]) + " "*(6-len(str(item[1]))) + "|")
         print "\n"
-
-
-
-
-        
