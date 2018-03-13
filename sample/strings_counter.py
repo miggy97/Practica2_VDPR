@@ -53,11 +53,11 @@ class StringsCounter(object):
         print ("\nNumero de palabras: " + str(words))
         print ("Numero de palabras diferentes: " + str(set_words) + "\n")
         print ("|      Words      | Count |")
-        print ("---------------------")
+        print ("---------------------------")
         for item in dic:
             space = 0
             for x in [ord(c) for c in item[0]]:
                 if x > 128:
-                    space = space + 1 
+                    space = space + 1
             print("| " + item[0] + " "*(16-len(item[0])+space) + "| " + str(item[1]) + " "*(6-len(str(item[1]))) + "|")
         print ("\n")
