@@ -7,6 +7,10 @@ class StringsCounter(object):
     def count_strings(text):
         word_counter = {}
 
+        #Si es un string lo dividimos en un array de strings
+        if type(text) is str:
+            text = text.split()
+
         #Quitar simbolos de puntuacion
         for i in range(len(text)):
             text[i] = StringsCounter.clear_stopwords(text[i])
@@ -22,6 +26,8 @@ class StringsCounter(object):
 
         #Lo ordenamos el diccionario por el numero de veces que haya aparecido la palabra
         sorted_dic = sorted(word_counter.items(), key = operator.itemgetter(1), reverse = True)
+
+        print (sorted_dic)
 
         return (sorted_dic, len(text), len(set_text))
 
