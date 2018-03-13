@@ -16,7 +16,7 @@ class StringsCounter(object):
             text[i] = StringsCounter.clear_stopwords(text[i])
 
         #Poner todo el texto en minusculas
-        text = map(str.lower, text)
+        text = list(map(str.lower, text))
 
         set_text = set(text)
 
@@ -26,7 +26,6 @@ class StringsCounter(object):
 
         #Lo ordenamos el diccionario por el numero de veces que haya aparecido la palabra
         sorted_dic = sorted(word_counter.items(), key = operator.itemgetter(1), reverse = True)
-
         print (sorted_dic)
 
         return (sorted_dic, len(text), len(set_text))
@@ -59,6 +58,6 @@ class StringsCounter(object):
             space = 0
             for x in [ord(c) for c in item[0]]:
                 if x > 128:
-                    space = 1
+                    space = space + 1 
             print("| " + item[0] + " "*(16-len(item[0])+space) + "| " + str(item[1]) + " "*(6-len(str(item[1]))) + "|")
-        print "\n"
+        print ("\n")
