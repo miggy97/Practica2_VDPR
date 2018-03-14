@@ -27,12 +27,12 @@ class TestStringsCounter(unittest.TestCase):
     def test_count_varios_Strings(self):
         text = ("verano verano verano primavera primavera primavera "
                 "invierno invierno invierno")
-        solution = [('verano', 3), ('primavera',3), ('invierno', 3)]
+        solution = [('verano', 3), ('primavera', 3), ('invierno', 3)]
 
-        result, words, set_words = StringsCounter.count_strings(text)
+        result = StringsCounter.count_strings(text)
 
         assert collections.Counter(result) == collections.Counter(solution)
-        
+
 
 if __name__ == '__main__':
     unittest.main()
