@@ -23,7 +23,6 @@ class TestStringsCounter(unittest.TestCase):
 
         assert collections.Counter(result) == collections.Counter(solution)
 
-
     def test_count_varios_Strings(self):
         text = ("verano verano verano primavera primavera primavera "
                 "invierno invierno invierno")
