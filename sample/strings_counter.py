@@ -6,6 +6,7 @@ class StringsCounter(object):
     @staticmethod
     def count_strings(text):
         word_counter = {}
+        print("prueba de la rama alvaro")
 
         #Si es un string lo dividimos en un array de strings
         if type(text) is str:
