@@ -14,7 +14,7 @@ class StringsCounter(object):
 
         # Quitar simbolos de puntuacion
         for i in range(len(text)):
-            if not text[i].isdigit():
+            if not text[i].isdigit() and len(text[i])>1:
                 text[i] = StringsCounter.clear_stopwords(text[i])
             else:
                 text[i]=""

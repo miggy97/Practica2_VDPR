@@ -49,6 +49,11 @@ class TestStringsCounter(unittest.TestCase):
                 same = False
                 break
         assert same == True
+    def test_strings_are_more_than_1_char(self):   
+        text = ("a b cd efg h i jk")
+        solution = [('cd',1),('efg',1),('jk',1)]
+        result = StringsCounter.count_strings(text)
+        assert collections.Counter(result) == collections.Counter(solution)
         
     #10 tratamiento de numeros
     def test_numbers_without_string(self):
