@@ -17,17 +17,17 @@ class StringsCounter(object):
             text[i] = StringsCounter.clear_stopwords(text[i])
 
         # Poner todo el texto en minusculas
-        text = list(map(str.lower, text))
-
+        text = list(map(str.lower, text))      
         set_text = set(text)
-
+        
         # Contamos el numero de palabras repetidas y lo almacenamso en un diccionario
+        
         for word in set_text:
-            word_counter[word] = StringsCounter.count_words(word, text)
+            word_counter[word] = StringsCounter.count_words(word, text)        
 
         # Lo ordenamos el diccionario por el numero de veces que haya aparecido la palabra
-        sorted_dic = sorted(word_counter.items(),
-                            key=operator.itemgetter(1), reverse=True)
+        sorted_dic = sorted(word_counter.items(), key=operator.itemgetter(1), reverse=True)
+       
         print (sorted_dic)
         print ("\nNumero de palabras: " + str(len(text)))
         print ("Numero de palabras diferentes: " + str(len(set_text)) + "\n")
