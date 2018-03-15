@@ -17,8 +17,8 @@ class TestStringsCounter(unittest.TestCase):
     def test_meter_numeros_String(self):
         text = ("1 2 3 1 2 3 1 2 3 4 alvaro 6")
 
-        solution = [('1', 3), ('2', 3), ('3', 3), ('4', 1), ('alvaro', 1), ('6', 1)]
-
+        #solution = [('1', 3), ('2', 3), ('3', 3), ('4', 1), ('alvaro', 1), ('6', 1)]
+        solution = [('alvaro',1)]
         result = StringsCounter.count_strings(text)
 
         assert collections.Counter(result) == collections.Counter(solution)
@@ -32,7 +32,7 @@ class TestStringsCounter(unittest.TestCase):
 
         assert collections.Counter(result) == collections.Counter(solution)
 
-    #8
+    #8 verificar que mete bien las palabras
     def test_check_one_string_is_the_same(self):
         text = ("hola")
         solution = ['hola']
@@ -49,6 +49,19 @@ class TestStringsCounter(unittest.TestCase):
                 same = False
                 break
         assert same == True
+        
+    #10 tratamiento de numeros
+    def test_numbers_without_string(self):
+        text = ("1 2 3")
+        solution = []
+        result = StringsCounter.count_strings(text)
+        assert collections.Counter(result) == collections.Counter(solution)
+    
+    def test_numbers_in_string(self):
+        text = ("1 4m 4 133t h4ck3r")
+        solution = [('4m',1),('133t',1),('h4ck3r',1)]
+        result = StringsCounter.count_strings(text)
+        assert collections.Counter(result) == collections.Counter(solution)
         
 if __name__ == '__main__':
     unittest.main()

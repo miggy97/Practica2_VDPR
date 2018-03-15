@@ -14,12 +14,18 @@ class StringsCounter(object):
 
         # Quitar simbolos de puntuacion
         for i in range(len(text)):
-            text[i] = StringsCounter.clear_stopwords(text[i])
+            if not text[i].isdigit():
+                text[i] = StringsCounter.clear_stopwords(text[i])
+            else:
+                text[i]=""
 
         # Poner todo el texto en minusculas
         text = list(map(str.lower, text))      
         set_text = set(text)
         
+        #eliminamos elementos vacios
+        if "" in set_text:
+            set_text.remove("")
         # Contamos el numero de palabras repetidas y lo almacenamso en un diccionario
         
         for word in set_text:
