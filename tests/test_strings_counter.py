@@ -41,10 +41,10 @@ class TestStringsCounter(unittest.TestCase):
         
     def test_check_several_strings_are_the_same(self):
         text = ("hola caracola, esto es un texto de prueba!!")
-        solution=['hola','caracola','esto', 'es', 'un', 'texto', 'de', 'prueba']
+        solution=['hola','caracola','esto', 'texto', 'de', 'prueba']
         result = StringsCounter.count_strings(text)
         same = True
-        for i in range(0,7):
+        for i in range(0,len(solution)):
             if result[i][0] not in solution == True:
                 same = False
                 break
