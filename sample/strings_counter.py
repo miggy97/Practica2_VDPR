@@ -16,7 +16,11 @@ class StringsCounter(object):
         for i in range(len(text)):
             if not text[i].isdigit() and len(text[i])>1:
                 text[i] = StringsCounter.clear_punctiation_symbols(text[i])
-                text[i] = StringsCounter.clear_stopwords(text[i])
+                if len(text[i])<2:
+                    text[i]=""
+                else:
+                    text[i] = StringsCounter.clear_stopwords(text[i])
+                
             else:
                 text[i]=""
 
@@ -50,11 +54,13 @@ class StringsCounter(object):
                 break
         return word
     
+    @staticmethod
     def clear_punctiation_symbols(word):
         punctuation_symbols = set(['.', ',', '"', "'", '?', '!', ':', ';', '(', ')', '[', ']', '{', '}','<','>','|', ])   
         for x in punctuation_symbols:
             word = word.replace(x, "")
         return word
+    
     @staticmethod
     def count_words(word, text):
         cont = 0
