@@ -1,3 +1,4 @@
+# coding=utf-8
 import unittest
 import collections
 from sample.strings_counter import StringsCounter
@@ -163,6 +164,25 @@ class TestStringsCounter(unittest.TestCase):
     def test_varias_siglas_con_strings(self):
         text = ("la C.I.A esta trabajando con la N.A.S.A")
         solution = [('nasa', 1), ('trabajando', 1), ('cia', 1)]
+        result = StringsCounter.count_strings(text)
+        assert collections.Counter(result) == collections.Counter(solution)
+
+    #4 Unicode
+    def test_unicode(self):
+        text = ("❤ ❤ ❤")
+        solution = [('❤', 3)]
+        result = StringsCounter.count_strings(text)
+        assert collections.Counter(result) == collections.Counter(solution)
+
+    def test_unicode_diferentes(self):
+        text = ("❤ ☢ ❤ ☢")
+        solution = [('❤', 2), ('☢', 2)]
+        result = StringsCounter.count_strings(text)
+        assert collections.Counter(result) == collections.Counter(solution)
+
+    def test_unicode_string(self):
+        text = ("las armas ☢ es peligrosa")
+        solution = [('armas', 1), ('☢', 1), ('peligrosa', 1)]
         result = StringsCounter.count_strings(text)
         assert collections.Counter(result) == collections.Counter(solution)
 
