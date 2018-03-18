@@ -147,5 +147,24 @@ class TestStringsCounter(unittest.TestCase):
         solution = [('hola', 3), ('adios', 2), ('buenas', 1)]
         assert solution == StringsCounter.count_strings(text)
         
+    #12 tratamiento de siglas
+    def test_sigla_unica(self):
+        text = ("C.I.A")
+        solution = [('cia', 1)]
+        result = StringsCounter.count_strings(text)
+        assert collections.Counter(result) == collections.Counter(solution)
+
+    def test_varias_siglas(self):
+        text = ("C.I.A  N.A.S.A")
+        solution = [('cia', 1), ('nasa', 1)]
+        result = StringsCounter.count_strings(text)
+        assert collections.Counter(result) == collections.Counter(solution)
+
+    def test_varias_siglas_con_strings(self):
+        text = ("la C.I.A esta trabajando con la N.A.S.A")
+        solution = [('nasa', 1), ('trabajando', 1), ('cia', 1)]
+        result = StringsCounter.count_strings(text)
+        assert collections.Counter(result) == collections.Counter(solution)
+
 if __name__ == '__main__':
     unittest.main()
