@@ -12,7 +12,10 @@ class StringsCounter(object):
         # Si es un string lo dividimos en un array de strings
         if type(text) is str:
             text = text.split()
-
+        
+        # Poner todo el texto en minusculas
+        text = list(map(str.lower, text))     
+        
         # Quitar simbolos de puntuacion
         for i in range(len(text)):
             if not text[i].isdigit() and len(text[i])>1:
@@ -24,8 +27,7 @@ class StringsCounter(object):
             else:
                 text[i]=""
 
-        # Poner todo el texto en minusculas
-        text = list(map(str.lower, text))      
+         
         set_text = set(text)
         
         #eliminamos elementos vacios
