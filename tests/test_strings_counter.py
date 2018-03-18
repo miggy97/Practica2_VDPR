@@ -170,19 +170,19 @@ class TestStringsCounter(unittest.TestCase):
     #4 Unicode
     def test_unicode(self):
         text = ("❤ ❤ ❤")
-        solution = [('❤', 3)]
+        solution = []
         result = StringsCounter.count_strings(text)
         assert collections.Counter(result) == collections.Counter(solution)
 
     def test_unicode_diferentes(self):
         text = ("❤ ☢ ❤ ☢")
-        solution = [('❤', 2), ('☢', 2)]
+        solution = []
         result = StringsCounter.count_strings(text)
         assert collections.Counter(result) == collections.Counter(solution)
 
     def test_unicode_string(self):
-        text = ("las armas ☢ es peligrosa")
-        solution = [('armas', 1), ('☢', 1), ('peligrosa', 1)]
+        text = ("las armas ☢ son peligrosas")
+        solution = [('armas', 1), ('son', 1), ('peligrosas', 1)]
         result = StringsCounter.count_strings(text)
         assert collections.Counter(result) == collections.Counter(solution)
 

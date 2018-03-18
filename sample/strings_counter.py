@@ -12,6 +12,7 @@ class StringsCounter(object):
 
         # Si es un string lo dividimos en un array de strings
         if type(text) is str:
+            text = text.decode('unicode_escape').encode('ascii','ignore')
             text = text.split()
         
         # Poner todo el texto en minusculas
@@ -30,7 +31,7 @@ class StringsCounter(object):
 
          
         set_text = set(text)
-        
+
         #eliminamos elementos vacios
         if "" in set_text:
             set_text.remove("")
