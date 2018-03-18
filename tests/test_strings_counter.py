@@ -40,7 +40,7 @@ class TestStringsCounter(unittest.TestCase):
             if result[i][0] not in solution == True:
                 same = False
                 break
-        assert same == True
+        assert same
         
     def test_strings_are_more_than_1_char(self):   
         text = ("a b cd efg h i jk")
