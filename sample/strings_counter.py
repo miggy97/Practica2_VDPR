@@ -4,7 +4,6 @@ import operator
 
 
 class StringsCounter(object):
-    """A class to play with the strings"""
 
     @staticmethod
     def count_strings(text):
@@ -18,7 +17,7 @@ class StringsCounter(object):
         # Poner todo el texto en minusculas
         text = list(map(str.lower, text))     
         
-        # Quitar simbolos de puntuacion
+        # Quitar simbolos de puntuacion y stopwords
         for i in range(len(text)):
             if not text[i].isdigit() and len(text[i])>1:
                 text[i] = StringsCounter.clear_punctiation_symbols(text[i])
