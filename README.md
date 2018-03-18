@@ -2,7 +2,7 @@
 
 ## Integrantes del equipo
 
-Javier Guillamón Pardo  
+Javir Guillamón Pardo  
 Borja Sanchidrián Monge  
 Álvaro López-Jurado Reynolds  
 Marino Pérez Segura  

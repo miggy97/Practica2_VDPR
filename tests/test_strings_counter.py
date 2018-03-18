@@ -11,10 +11,8 @@ class TestStringsCounter(unittest.TestCase):
         result = StringsCounter.count_strings(text)
         assert collections.Counter(result) == collections.Counter(solution)
 
-
     def test_meter_numeros_String(self):
         text = ("1 2 3 1 2 3 1 2 3 4 alvaro 6")
-        #solution = [('1', 3), ('2', 3), ('3', 3), ('4', 1), ('alvaro', 1), ('6', 1)]
         solution = [('alvaro',1)]
         result = StringsCounter.count_strings(text)
         assert collections.Counter(result) == collections.Counter(solution)
@@ -42,7 +40,7 @@ class TestStringsCounter(unittest.TestCase):
             if result[i][0] not in solution == True:
                 same = False
                 break
-        assert same == True
+        assert same
         
     def test_strings_are_more_than_1_char(self):   
         text = ("a b cd efg h i jk")
@@ -81,7 +79,92 @@ class TestStringsCounter(unittest.TestCase):
         solution = [('bc',1),('def',1)]
         result = StringsCounter.count_strings(text)
         assert collections.Counter(result) == collections.Counter(solution)
+    
+    #Metodos internos de la clase strings_counter    
+    def test_method_clear_stopword(self):
+        word = "aquel"
+        solution = ""
+        result = StringsCounter.clear_stopwords(word)
+        assert collections.Counter(result) == collections.Counter(solution)
         
+    def test_method_clear_punctiation_symbols_alone(self):
+        word = "!"
+        solution = ""
+        result = StringsCounter.clear_punctiation_symbols(word)
+        assert collections.Counter(result) == collections.Counter(solution)
         
+    def test_method_clear_punctiation_symbols_at_end_of_string(self):
+        word = "Hola?"
+        solution = "Hola"
+        result = StringsCounter.clear_punctiation_symbols(word)
+        assert collections.Counter(result) == collections.Counter(solution)
+        
+    def test_method_clear_punctiation_symbols_inside_string(self):
+        word = "H<o.l;a)"
+        solution = "Hola"
+        result = StringsCounter.clear_punctiation_symbols(word)
+        assert collections.Counter(result) == collections.Counter(solution)
+        
+    def test_count_words(self): 
+        word = "Hola"
+        text = ['Hola','Hola','Hola']
+        solution = 3
+        result = StringsCounter.count_words(word,text)
+        assert result == solution 
+        
+    def test_count_words_uneven_text(self): 
+        word = "Hola"
+        text = ['Hola','este','texto','es','de','prueba','Hola']
+        solution = 2
+        result = StringsCounter.count_words(word,text)
+        assert result == solution 
+    
+    #3 text null   
+    def test_null_text(self):
+        text = None
+        self.assertRaises(TypeError, StringsCounter.count_strings,text)
+        
+    def test_empty_text(self):        
+        text = ("")
+        solution = []
+        result = StringsCounter.count_strings(text)
+        assert collections.Counter(result) == collections.Counter(solution)
+        
+    #7 Palabras iguales con diferentes mayusculas
+    def test_different_capital_letters_same_word(self):
+        text = ("HoLA hola HOLA")
+        solution = [('hola',3)]
+        assert solution[0][0] == StringsCounter.count_strings(text)[0][0]
+
+    def test_different_capital_letters_same_number(self):
+        text = ("HoLA hola HOLA")
+        solution = [('holi',3)]
+        assert solution[0][1] == StringsCounter.count_strings(text)[0][1]
+    
+    #9 Orden de la lista
+    def test_correct_order(self):
+        text = ("hola hola hola adios adios buenas")
+        solution = [('hola', 3), ('adios', 2), ('buenas', 1)]
+        assert solution == StringsCounter.count_strings(text)
+        
+    #12 tratamiento de siglas
+    def test_sigla_unica(self):
+        text = ("C.I.A")
+        solution = [('cia', 1)]
+        result = StringsCounter.count_strings(text)
+        assert collections.Counter(result) == collections.Counter(solution)
+
+    def test_varias_siglas(self):
+        text = ("C.I.A  N.A.S.A")
+        solution = [('cia', 1), ('nasa', 1)]
+        result = StringsCounter.count_strings(text)
+        assert collections.Counter(result) == collections.Counter(solution)
+
+    def test_varias_siglas_con_strings(self):
+        text = ("la C.I.A esta trabajando con la N.A.S.A")
+        solution = [('nasa', 1), ('trabajando', 1), ('cia', 1)]
+        result = StringsCounter.count_strings(text)
+        assert collections.Counter(result) == collections.Counter(solution)
+
 if __name__ == '__main__':
     unittest.main()
