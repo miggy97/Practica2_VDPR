@@ -81,7 +81,45 @@ class TestStringsCounter(unittest.TestCase):
         solution = [('bc',1),('def',1)]
         result = StringsCounter.count_strings(text)
         assert collections.Counter(result) == collections.Counter(solution)
+    
+    #Metodos internos de la clase strings_counter    
+    def test_method_clear_stopword(self):
+        word = "aquel"
+        solution = ""
+        result = StringsCounter.clear_stopwords(word)
+        assert collections.Counter(result) == collections.Counter(solution)
         
+    def test_method_clear_punctiation_symbols_alone(self):
+        word = "!"
+        solution = ""
+        result = StringsCounter.clear_punctiation_symbols(word)
+        assert collections.Counter(result) == collections.Counter(solution)
+        
+    def test_method_clear_punctiation_symbols_at_end_of_string(self):
+        word = "Hola?"
+        solution = "Hola"
+        result = StringsCounter.clear_punctiation_symbols(word)
+        assert collections.Counter(result) == collections.Counter(solution)
+        
+    def test_method_clear_punctiation_symbols_inside_string(self):
+        word = "H<o.l;a)"
+        solution = "Hola"
+        result = StringsCounter.clear_punctiation_symbols(word)
+        assert collections.Counter(result) == collections.Counter(solution)
+        
+    def test_count_words(self): 
+        word = "Hola"
+        text = ['Hola','Hola','Hola']
+        solution = 3
+        result = StringsCounter.count_words(word,text)
+        assert result == solution 
+        
+    def test_count_words_uneven_text(self): 
+        word = "Hola"
+        text = ['Hola','este','texto','es','de','prueba','Hola']
+        solution = 2
+        result = StringsCounter.count_words(word,text)
+        assert result == solution 
         
 if __name__ == '__main__':
     unittest.main()
