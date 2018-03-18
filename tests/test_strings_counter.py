@@ -14,7 +14,6 @@ class TestStringsCounter(unittest.TestCase):
 
     def test_meter_numeros_String(self):
         text = ("1 2 3 1 2 3 1 2 3 4 alvaro 6")
-        #solution = [('1', 3), ('2', 3), ('3', 3), ('4', 1), ('alvaro', 1), ('6', 1)]
         solution = [('alvaro',1)]
         result = StringsCounter.count_strings(text)
         assert collections.Counter(result) == collections.Counter(solution)
@@ -76,13 +75,31 @@ class TestStringsCounter(unittest.TestCase):
         solution = [('hola',1)]
         result = StringsCounter.count_strings(text)
         assert collections.Counter(result) == collections.Counter(solution)
-    
+
     def test_punctuation_symbol_with_strings_of_diferent_lenght(self):
         text = ("a... bc! def??")
         solution = [('bc',1),('def',1)]
         result = StringsCounter.count_strings(text)
         assert collections.Counter(result) == collections.Counter(solution)
 
+    #12 tratamiento de siglas
+    def test_sigla_unica(self):
+        text = ("C.I.A")
+        solution = [('cia', 1)]
+        result = StringsCounter.count_strings(text)
+        assert collections.Counter(result) == collections.Counter(solution)
+
+    def test_varias_siglas(self):
+        text = ("C.I.A  N.A.S.A")
+        solution = [('cia', 1), ('nasa', 1)]
+        result = StringsCounter.count_strings(text)
+        assert collections.Counter(result) == collections.Counter(solution)
+
+    def test_varias_siglas_con_strings(self):
+        text = ("la C.I.A esta trabajando con la N.A.S.A")
+        solution = [('nasa', 1), ('trabajando', 1), ('cia', 1)]
+        result = StringsCounter.count_strings(text)
+        assert collections.Counter(result) == collections.Counter(solution)
 
 if __name__ == '__main__':
     unittest.main()
